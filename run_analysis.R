@@ -1,15 +1,19 @@
 # merge all data
+
 # join train and test dataset of x
 data = read.table('~/dataAnalysis/UCI HAR Dataset/train/X_train.txt', header = F)
 data = rbind(data, read.table('~/dataAnalysis/UCI HAR Dataset/test/X_test.txt', header = F))
+
 # join to data subject variable
 pom = read.table('~/dataAnalysis/UCI HAR Dataset/train/subject_train.txt', header = F)
 pom = rbind(pom, read.table('~/dataAnalysis/UCI HAR Dataset/test/subject_test.txt', header = F))
 data$subject = pom
+
 # join to data activity variable
 pom = read.table('~/dataAnalysis/UCI HAR Dataset/train/y_train.txt', header = F)
 pom = rbind(pom, read.table('~/dataAnalysis/UCI HAR Dataset/test/y_test.txt', header = F))
 data$activity = pom
+
 
 # rename activities
 data[data$activity == 1, 'activity'] = 'WALKING'
