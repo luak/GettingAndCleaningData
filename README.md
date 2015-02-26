@@ -43,13 +43,13 @@ colnames(data) = nam
 #### 4. Extracts only the measurements on the mean and standard deviation for each measurement. 
 ```{r eval=FALSE}
 data = data[ ,c(which(grepl('std',nam)), which(grepl('mean',nam)), 562, 563)]
-colnames(data)[80]  = 'subject'
-colnames(data)[81]  = 'activity'
+colnames(data[,80])  = 'subject'
+colnames(data[,81])  = 'activity'
 ```
 #### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 ```{r eval=FALSE}
 library(data.table)
 DT = data.table(data)
-pom = DT[, lapply(.SD, sum, na.rm=T), by=c('subject','activity')]
+pom = DT[, lapply(.SD, mean, na.rm=T), by=c('subject','activity')]
 write.table(pom, file = '~/dataAnalysis/tidy.txt', row.names = F)
 ```
