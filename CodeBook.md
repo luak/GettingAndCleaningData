@@ -47,7 +47,7 @@ fBodyAccJerkMag
 fBodyGyroMag  
 fBodyGyroJerkMag  
   
-The set of variables that were estimated from these signals are:  
+For our purposes we look for the mean and standard deviation variables  
   
-mean(): Mean value  
-std(): Standard deviation  
+mean: Mean value  
+std: Standard deviation  
